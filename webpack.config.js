@@ -1,10 +1,11 @@
 var webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    './client/src/index.js'
+    './client/src/index.jsx'
   ],
   module: {
     loaders: [{
@@ -26,6 +27,7 @@ module.exports = {
     hot: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    //new UglifyJSPlugin()
   ]
 };

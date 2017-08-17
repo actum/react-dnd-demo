@@ -1,16 +1,22 @@
-import jsdom from 'jsdom';
+import { JSDOM } from 'jsdom';
 import chai from 'chai';
-import chaiImmutable from 'chai-immutable';
+import chaiEnzyme from 'chai-enzyme';
 
-const {JSDOM} = jsdom;
-const doc = new JSDOM('<!doctype html><html><body></body></html>');
-const win = doc.window;
+const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
+const { window } = jsdom;
 
-global.document = doc;
-global.window = win;
+function copyProps(src, target) {
+  const props = Object.getOwnPropertyNames(src)
+    .filter(prop => typeof target[prop] === 'undefined')
+    .map(prop => Object.getOwnPropertyDescriptor(src, prop));
+  Object.defineProperties(target, props);
+}
 
-Object.keys(window).forEach((key) => {
-    if (!(key in global)) global[key] = window[key];
-});
+global.window = window;
+global.document = window.document;
+global.navigator = {
+  userAgent: 'node.js',
+};
+copyProps(window, global);
 
-chai.use(chaiImmutable);
+chai.use(chaiEnzyme());
