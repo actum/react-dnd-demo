@@ -2,12 +2,14 @@ var webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
+  
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
     './client/src/index.jsx'
   ],
   module: {
+  
     loaders: [{
         test: /\.jsx?$/,
         exclude: /node_modules/,

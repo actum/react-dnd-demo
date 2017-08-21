@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Voting from './components/Voting';
+import App from './components/App';
+import makeStore from './store.js';
+import { Provider } from 'react-redux'
 
-const pair = ['Trainspotting', '28 Days Later'];
+
+export const store = makeStore();
 
 ReactDOM.render(
-    <Voting pair={pair} hasVoted="Trainspotting" winner="" />,
+    <Provider store={store}>
+        <App/>
+    </Provider>,
     document.getElementById('app')
 )

@@ -1,0 +1,36 @@
+.bin {
+    width: 150px;
+    border: 2px solid darkgrey;
+    padding: 10px;
+    float: left;
+    margin-left: 5px;
+}
+
+img{
+    width: 100%;
+}
+
+.item:hover {
+    outline: rosybrown dotted thick;
+}
+
+.items > .item {
+    width: 100px;
+    float: left;
+    margin-right: 5px;
+}
+
+
+.items {
+    height: 250px;
+}
+
+.bins {
+    height: 400px;
+}
+.green {
+    outline: green dotted thick;
+}
+.red {
+    box-shadow: 0 0 0 2pt red;
+}
