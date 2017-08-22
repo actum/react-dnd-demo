@@ -11,7 +11,7 @@ const binTarget = {
     },
     canDrop(props, monitor){
         const item = monitor.getItem();
-        return (props.accepts === item.type)
+        return (props.accepts.some(accept => accept === item.type))
     }
 }
 

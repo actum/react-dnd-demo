@@ -23,10 +23,10 @@ export const INITIAL_STATE = {
     ],
     bins: [
         { name: 'Bin 1',
-          accepts: 'language'
+          accepts: ['language', 'movie']
         },
         { name: 'Bin 2',
-          accepts: 'movie'
+          accepts: ['language']
         }
     ]
 };
