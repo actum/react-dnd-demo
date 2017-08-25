@@ -4,7 +4,6 @@ import App from './components/App';
 import makeStore from './store.js';
 import { Provider } from 'react-redux'
 
-
 export const store = makeStore();
 
 ReactDOM.render(

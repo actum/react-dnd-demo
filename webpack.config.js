@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   
@@ -29,7 +28,6 @@ module.exports = {
     hot: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    //new UglifyJSPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ]
 };

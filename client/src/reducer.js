@@ -1,4 +1,4 @@
-import {moveLanguge, INITIAL_STATE} from './functions/core';
+import {INITIAL_STATE} from './config';
 
 export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type) {

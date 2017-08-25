@@ -29,16 +29,13 @@ class Bin extends Component {
         const {name, accepts} = this.props;
 
         //DnD
-        
         const { isOver, connectDropTarget, canDrop, draggedItem } = this.props;
 
         return connectDropTarget(
-            <div className="bin">
+            <div className={canDrop ? "bin green" : !canDrop && draggedItem ? "bin red" : "bin"}>
                 <h2> {name} </h2>
-                <img 
-                    className={canDrop ? "bin green" : !canDrop && draggedItem && "bin red"} 
-                    src="https://openclipart.org/download/228877/Layer-1.svg"/>
-                <span> Accepts: {accepts} </span>  
+                <img src="https://openclipart.org/download/228877/Layer-1.svg"/>
+                <span className="accepts"> Accepts: {accepts.map(accept => <p key={accept}>{accept}</p>)} </span>  
                 {this.props.children}     
             </div>
         );

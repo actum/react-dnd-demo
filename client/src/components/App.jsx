@@ -26,7 +26,7 @@ class App extends Component {
 
     renderContent(content, name) {
         return content.map((item, index) => {
-            return (item.location === name) && <Item key={index} name={item.name} icon={item.icon} type={item.type} />
+            return (item.location === name) && <Item key={index} name={item.name} icon={item.icon} type={item.type} location={item.location}/>
         })
     }
 
