@@ -20,10 +20,6 @@ const mapDispatchToProps = dispatch => {
 
 class App extends Component {
 
-    componentWillReceiveProps(nextProps) {
-        console.log('here:', nextProps);
-    }
-
     renderContent(content, name) {
         return content.map((item, index) => {
             return (item.location === name) && <Item key={index} name={item.name} icon={item.icon} type={item.type} location={item.location}/>
@@ -31,7 +27,6 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.props);
         const {content, bins} = this.props.data
         return (
             <div>
