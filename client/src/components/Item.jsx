@@ -19,11 +19,11 @@ function collect(connect, monitor) {
 
 class Item extends Component {
     render() {
-        const {name, icon, type, isDragging, connectDragSource, location} = this.props;
+        const { name, icon, type, isDragging, connectDragSource, location } = this.props;
         return connectDragSource(
-            <div style={{ opacity: isDragging ? 0.5 : 1}} className={"item " + type}>
+            <div style={ { opacity: isDragging ? 0.5 : 1 } } className={ "item " + type }>
                 <p className="header"> {name + " (" + type + ")"} </p>
-                {!location && <img src={icon}/> } 
+                { !location && <img src={ icon }/> } 
             </div>
         );
     }

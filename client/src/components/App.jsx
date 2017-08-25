@@ -22,20 +22,20 @@ class App extends Component {
 
     renderContent(content, name) {
         return content.map((item, index) => {
-            return (item.location === name) && <Item key={index} name={item.name} icon={item.icon} type={item.type} location={item.location}/>
+            return (item.location === name) && <Item key={ index } name={ item.name } icon={ item.icon } type={ item.type } location={ item.location }/>
         })
     }
 
     render() {
-        const {content, bins} = this.props.data
+        const { content, bins } = this.props.data
         return (
             <div>
                 <div className="items">
-                    {this.renderContent(content)}
+                    { this.renderContent(content) }
                 </div>
                 <div className="bins">
                     {bins.map((bin, index) => {
-                        return <Bin moveItem={this.props.moveItem} key={index} name={bin.name} accepts={bin.accepts}> {this.renderContent(content, bin.name)} </Bin>
+                        return <Bin moveItem={ this.props.moveItem } key={ index } name={ bin.name } accepts={ bin.accepts }> { this.renderContent(content, bin.name) } </Bin>
                     })}
                 </div>                
             </div>

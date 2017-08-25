@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
-import reducer from '../reducer.js';
-import {store} from '../index';
-import { connect } from 'react-redux'
 
 const binTarget = {
     drop(props, monitor){
@@ -18,7 +15,6 @@ const binTarget = {
 function collect(connect, monitor) {
     return {
         connectDropTarget: connect.dropTarget(),
-        isOver: monitor.isOver(),
         canDrop: monitor.canDrop(),
         draggedItem: monitor.getItem()
     }
@@ -26,17 +22,17 @@ function collect(connect, monitor) {
 
 class Bin extends Component {
     render() {
-        const {name, accepts} = this.props;
+        const { name, accepts } = this.props;
 
         //DnD
-        const { isOver, connectDropTarget, canDrop, draggedItem } = this.props;
+        const { connectDropTarget, canDrop, draggedItem } = this.props;
 
         return connectDropTarget(
-            <div className={canDrop ? "bin green" : !canDrop && draggedItem ? "bin red" : "bin"}>
-                <h2> {name} </h2>
+            <div className={ canDrop ? "bin green" : !canDrop && draggedItem ? "bin red" : "bin" }>
+                <h2> { name } </h2>
                 <img src="https://openclipart.org/download/228877/Layer-1.svg"/>
-                <span className="accepts"> Accepts: {accepts.map(accept => <p key={accept}>{accept}</p>)} </span>  
-                {this.props.children}     
+                <span className="accepts"> Accepts: { accepts.map(accept => <p key={ accept }>{ accept }</p>) } </span>  
+                { this.props.children }     
             </div>
         );
     }
