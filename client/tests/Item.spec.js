@@ -6,6 +6,7 @@ import TestBackend from 'react-dnd-test-backend';
 import { DragDropContext } from 'react-dnd';
 import Item from '../src/components/Item.jsx';
 import Bin from '../src/components/Bin.jsx';
+import App from '../src/components/App.jsx'
 
 /**
  * Wraps a component into a DragDropContext that uses the TestBackend.
@@ -37,27 +38,31 @@ describe('Item', () => {
         expect(div.style.opacity).to.equal('0.5');
     });
 
-    it('can be tested with the testing backend', () => {
+    it('transfers data with drop', () => {
+
+        class RootElement extends Component{
+          render(){
+            return <div>
+                  <Item name='test' type="testing"/> 
+                  <Bin name='test' accepts={["testing"]} moveItem={(data) => expect(data.name).to.equal('test')} />
+              </div>
+          }
+        }
 
         // Render with the test context that uses the test backend
-        const ItemContext = wrapInTestContext(Item);
-        let root = TestUtils.renderIntoDocument(<ItemContext name='test' type="testing" />);
-        
+        const AppContext = wrapInTestContext(RootElement);
+        const appContext = TestUtils.renderIntoDocument(<AppContext />);
+
         // Obtain a reference to the backend
-        const backend = root.getManager().getBackend();
-        
-        // Test that the opacity is 1
-        let div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
-        expect(div.style.opacity).to.equal('1');
+        const backend = appContext.getManager().getBackend();
 
         // Find the drag source ID and use it to simulate the dragging operation
-        const item = TestUtils.findRenderedComponentWithType(root, Item);
+        const item = TestUtils.findRenderedComponentWithType(appContext, Item);
+        const bin = TestUtils.findRenderedComponentWithType(appContext, Bin);
         backend.simulateBeginDrag([item.getHandlerId()]);
-
-        // Verify that the div changed its opacity
-        div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
-        expect(div.style.opacity).to.equal('0.5');
-
+        backend.simulateHover([bin.getHandlerId()]);
+        backend.simulateDrop();
+        backend.simulateEndDrag();
     });
 });
 
