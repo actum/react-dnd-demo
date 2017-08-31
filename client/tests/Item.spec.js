@@ -8,7 +8,7 @@ import Item from '../src/components/Item.jsx';
 import Bin from '../src/components/Bin.jsx';
 import App from '../src/components/App.jsx'
 
-const error = "(╯°□°）╯︵ ┻━┻)";
+const error = "(╯°□°）╯︵ ┻━┻";
 
 /**
  * Wraps a component into a DragDropContext that uses the TestBackend.
