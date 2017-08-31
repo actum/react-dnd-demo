@@ -8,6 +8,8 @@ import Item from '../src/components/Item.jsx';
 import Bin from '../src/components/Bin.jsx';
 import App from '../src/components/App.jsx'
 
+const error = "(╯°□°）╯︵ ┻━┻)";
+
 /**
  * Wraps a component into a DragDropContext that uses the TestBackend.
  */
@@ -27,7 +29,7 @@ describe('Item', () => {
         const identity = el => el;
         let root = TestUtils.renderIntoDocument(<OriginalItem name="test" type="testing" connectDragSource={ identity } />);
         let div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
-        expect(div.style.opacity).to.equal('1');
+        expect(div.style.opacity, `opacity is 1 - ${error}`).to.equal('1');
     });
 
     it('reacts to dragging', () => {
@@ -35,7 +37,7 @@ describe('Item', () => {
         const identity = el => el;
         let root = TestUtils.renderIntoDocument(<OriginalItem name="test" type="testing" connectDragSource={ identity } isDragging/>);
         let div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
-        expect(div.style.opacity).to.equal('0.5');
+        expect(div.style.opacity, `opacity is 0.5 - ${error}`).to.equal('0.5');
     });
 
     it('transfers data with drop', () => {
@@ -44,7 +46,7 @@ describe('Item', () => {
           render(){
             return <div>
                   <Item name='test' type="testing"/> 
-                  <Bin name='test' accepts={["testing"]} moveItem={(data) => expect(data.name).to.equal('test')} />
+                  <Bin name='test' accepts={["testing"]} moveItem={(data) => expect(data.name,  `Name equals test - ${error}`).to.equal('test')} />
               </div>
           }
         }
