@@ -10,7 +10,7 @@ module.exports = {
     loaders: [{
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'react-hot-loader!babel-loader'
+        loader: 'babel-loader'
     }]
   },
   resolve: {
@@ -23,10 +23,9 @@ module.exports = {
   },
   devServer: {
     contentBase: './client/dist',
-    hot: true,
     port: process.env.PORT || 9000
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    //new webpack.HotModuleReplacementPlugin()
   ]
 };
