@@ -3,9 +3,7 @@ var webpack = require('webpack');
 module.exports = {
   
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:3000',
-    'webpack/hot/only-dev-server',
-    './client/src/index.jsx'
+    './client/src/index.jsx',
   ],
   module: {
   
