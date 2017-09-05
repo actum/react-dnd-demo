@@ -38,7 +38,10 @@
     "react-validation": "^2.10.9",
     "redux": "^3.7.2",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.1"
   },
   "babel": {
     "presets": [
