@@ -19,12 +19,6 @@ module.exports = {
         loader: 'babel-loader'
     }]
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-    modulesDirectories: [
-      'node_modules'
-    ]
-  },
   output: {
     path: __dirname + '/client/dist',
     publicPath: '/',
