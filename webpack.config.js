@@ -1,10 +1,16 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   
   entry: [
     './client/src/index.jsx',
   ],
+  resolveLoader: {
+    modules: ["node_modules"],
+    extensions: [".js", ".json"],
+    mainFields: ["loader", "main"]
+},
   module: {
   
     loaders: [{
