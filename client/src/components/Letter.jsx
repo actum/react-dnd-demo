@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 
-const itemSource = {
+const letterSource = {
     beginDrag(props) {
         return {
-            name: props.name,
+            letter: props.letter,
             type: props.type
         }
     }
@@ -17,16 +17,16 @@ function collect(connect, monitor) {
   };
 }
 
-class Item extends Component {
+class Letter extends Component {
     render() {
-        const { name, icon, type, isDragging, connectDragSource, location } = this.props;
+        const { letter, icon, type, isDragging, connectDragSource, location } = this.props;
         return connectDragSource(
             <div style={ { opacity: isDragging ? 0.5 : 1 } } className={ "item " + type }>
-                <p className="header"> {name + " (" + type + ")"} </p>
+                <p className="header"> {letter} </p>
                 { !location && <img src={ icon }/> } 
             </div>
         );
     }
 }
 
-export default DragSource('ITEM', itemSource, collect)(Item);
+export default DragSource('LETTER', letterSource, collect)(Letter);
