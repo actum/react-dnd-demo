@@ -1,7 +1,4 @@
-# react-dnd-demo
-* Usage: ```npm run dev```
-* Go to localhost:3000
+# Coolest form - presented by FizzBuzz corp International
+* Usage: ```npm run```
+* Go to localhost:9000
 * Be amazed
-
-
-![alt tag](http://i.imgur.com/5wWtz4V.png)
