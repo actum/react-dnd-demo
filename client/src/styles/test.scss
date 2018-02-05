@@ -1,0 +1,11 @@
+$height: 300px;
+
+body {
+    background-color: rebeccapurple;
+}
+
+#app {
+    background-color: aquamarine;
+    height: $height;
+    width: $height;
+}
