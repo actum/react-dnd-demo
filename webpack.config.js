@@ -1,8 +1,9 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
-const path = require('path');
 const srcPath = `${__dirname}/dist`;
 
 module.exports = {
@@ -10,42 +11,44 @@ module.exports = {
     './client/src/app/index.js',
   ],
   resolveLoader: {
-    modules: ["node_modules"],
-    extensions: [".js", ".json"],
-    mainFields: ["loader", "main"]
+    modules: ['node_modules'],
+    extensions: ['.js', '.json'],
+    mainFields: ['loader', 'main'],
   },
   module: {
     loaders: [{
-        test: /\.js?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ["env", "react", "es2015"]
-        }
+      test: /\.js?$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+      query: {
+        presets: ['env', 'react', 'es2015'],
       },
-      {
-        test: /\.(s*)css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader", "sass-loader"]
-        })
-      }]
+    },
+    {
+      test: /\.(s*)css$/,
+      loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', 'sass-loader'],
+      }),
+    }],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   output: {
     path: srcPath,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   devServer: {
     contentBase: srcPath,
-    port: process.env.PORT || 9000
+    port: process.env.PORT || 9000,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin("css/styles.css"),
-    new WriteFilePlugin()
-  ]
+    new HtmlWebpackPlugin(),
+    new FaviconsWebpackPlugin('./client/src/gfx/favicon.png'),
+    new ExtractTextPlugin('css/styles.css'),
+    new WriteFilePlugin(),
+  ],
 };
